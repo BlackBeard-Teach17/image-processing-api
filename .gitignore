@@ -10,6 +10,9 @@ node_modules
 # Ignore build folder
 build/
 
+# Ignore Resized images
+public/images/thumbnail
+
 #Ignore Editor files
 .vscode
 .idea
