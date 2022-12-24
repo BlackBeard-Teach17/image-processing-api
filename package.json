@@ -1,0 +1,40 @@
+{
+  "name": "image-processing-api",
+  "version": "1.0.0",
+  "description": "Image processing api",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run build && npm run jasmine",
+    "jasmine": "jasmine",
+    "build": "npx tsc",
+    "start": "nodemon --exec ts-node src/index.ts",
+    "lint": "eslint --ext .ts src/**/*.ts",
+    "lint:fix": "eslint --ext .ts src/**/*.ts --fix",
+    "prettier": "prettier --write src/**/*.ts"
+  },
+  "author": "Keamogetswe Mfoloe",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.15",
+    "@types/jasmine": "^4.3.1",
+    "@types/morgan": "^1.9.3",
+    "@types/node": "^18.11.17",
+    "@types/sharp": "^0.31.0",
+    "@typescript-eslint/eslint-plugin": "^5.47.0",
+    "@typescript-eslint/parser": "^5.47.0",
+    "eslint": "^8.30.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "jasmine": "^4.5.0",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.8.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "jasmine-spec-reporter": "^7.0.0",
+    "morgan": "^1.10.0",
+    "sharp": "^0.31.2"
+  }
+}

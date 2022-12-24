@@ -1,0 +1,16 @@
+# Ignore all .DS_Store files Mac OS X creates
+.DS_Store
+
+# Ignore node_modules folder
+node_modules
+
+# Ignore .env file API keys and secrets
+.env
+
+# Ignore build folder
+build/
+
+#Ignore Editor files
+.vscode
+.idea
+*.iml
