@@ -16,7 +16,11 @@ routes.get('/', async (req: express.Request, res: express.Response): Promise<unk
 
     const originalImagePath = path.join(__dirname, '../../public/images', `${filename}.jpg`);
 
-   // check if the image that the user want to resize exists
+   /**
+    * check if the image the user wants to resize exists and if not send an error message
+    * @param originalImagePath The path of the original image
+    * @returns                 void if the image exists or error message if it doesn't
+    */
    if (checkDir(originalImagePath) === false) {
        return res.status(400).send('Image not found!');
    }
@@ -25,13 +29,25 @@ routes.get('/', async (req: express.Request, res: express.Response): Promise<unk
    checkFileExtension(fileformat);// check if the file extension is valid
    const resizedImagePath = path.join(__dirname, '../../public/images/thumbnail', `${filename}-resized${width}x${height}+${fileformat}`);
 
-   // check if the resized image already exists
+   /**
+    * check if the image is already resized and if it is send the cached image
+    * @param resizedImagePath The path of the resized image
+    * @returns                void if the image is already resized
+    * 
+    */
    if (checkDir(resizedImagePath) === true) {
          console.log('Image already resized!');
          return res.status(200).sendFile(resizedImagePath); // send the cached image
    }
    
-    // resize the image and send it
+    /**
+     * resize the image and send it to the user
+     * @param width            The width of the image
+     * @param height           The height of the image
+     * @param originalImagePath The path of the original image
+     * @param resizedImagePath  The path of the resized image
+     * @returns                 void if the image is resized successfully or Error if it fails to resize the image
+     */
     try {
         await resizeImage({
             width ,
