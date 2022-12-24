@@ -1,5 +1,8 @@
 import sharp from 'sharp';
 
+/** 
+ * The parameters for the resizeImage function
+*/
 interface ImageParameters {
     width: number;
     height: number;
@@ -7,6 +10,14 @@ interface ImageParameters {
     resizedImagePath: string;
 }
 
+/**
+ * 
+ * @param width               The width of the resized image
+ * @param height              The height of the resized image
+ * @param originalImagePath   The path of the original image
+ * @param resizedImagePath    The path of the resized image
+ * @returns                   A promise that resolves to void 
+ */
 const resizeImage = async ({ width, height, originalImagePath, resizedImagePath}: ImageParameters): Promise<void> => {
 
     await sharp(originalImagePath)
