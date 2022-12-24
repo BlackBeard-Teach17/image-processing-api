@@ -6,6 +6,8 @@ describe("A suite to test out the resizeImage function", () => {
     const height = 100;
     const originalImagePath = "test";
     const resizedImagePath = "tests";
-    expectAsync(resizeImage({ width, height, originalImagePath, resizedImagePath })).toBeRejected();
+    expectAsync(
+      resizeImage({ width, height, originalImagePath, resizedImagePath })
+    ).toBeRejected();
   });
 });
