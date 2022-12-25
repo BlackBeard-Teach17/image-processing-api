@@ -1,4 +1,4 @@
-import fs from "fs";
+import fs from 'fs';
 
 /**
  *
@@ -6,11 +6,12 @@ import fs from "fs";
  * @returns       void if the file extension is valid
  * @throws        Error if the file extension is invalid
  */
-const checkFileExtension = (extname: string): void => {
-  const validExtensions = [".jpg", ".jpeg", ".png", ".webp"];
-  if (!validExtensions.includes(extname)) {
-    throw new Error("Invalid file extension");
-  }
+const checkFileExtension = (extname: string): Boolean => {
+    const validExtensions = ['.jpg', '.jpeg', '.png', '.webp'];
+    if (!validExtensions.includes(extname)) {
+        return false;
+    }
+    return true;
 };
 
 /**
@@ -19,11 +20,11 @@ const checkFileExtension = (extname: string): void => {
  * @returns       true if the directory exists and false if it doesn't
  */
 const checkDir = (dirPath: string): Boolean => {
-  const folderExists = fs.existsSync(dirPath);
-  if (folderExists === false) {
-    return false;
-  }
-  return true;
+    const folderExists = fs.existsSync(dirPath);
+    if (folderExists === false) {
+        return false;
+    }
+    return true;
 };
 
 /**
@@ -33,11 +34,11 @@ const checkDir = (dirPath: string): Boolean => {
  * @throws        Error if it fails to create the directory
  */
 const createDir = (dirPath: string): void => {
-  try {
-    fs.mkdirSync(dirPath);
-  } catch (err) {
-    console.error(err);
-  }
+    try {
+        fs.mkdirSync(dirPath);
+    } catch (err) {
+        console.error(err);
+    }
 };
 
 /**
@@ -49,16 +50,20 @@ const createDir = (dirPath: string): void => {
  * @throws         Error if the parameters are invalid
  */
 const imageValidator = (
-  filename: string,
-  width: number,
-  height: number
-): void => {
-  if (!filename || !width || !height) {
-    throw new Error("please make sure that you entered all the parameters");
-  }
-  if (isNaN(width) || isNaN(height)) {
-    throw new Error("please make sure that you entered valid width and height");
-  }
+    filename: string,
+    width: number,
+    height: number,
+): Boolean => {
+    if (!filename || !width || !height) {
+        return false;
+    }
+    if (isNaN(width) || isNaN(height)) {
+        return false;
+    }
+    if (width <= 0 || height <= 0) {
+        return false;
+    }
+    return true;
 };
 
 export default checkFileExtension;
